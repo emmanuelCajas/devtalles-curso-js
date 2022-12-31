@@ -159,6 +159,8 @@ btnDetener.addEventListener('click', () => {
     //     turnoComputadora(puntosJugador);
     // }
 
+    //by Emmanuel 2022
+
 })
 
 

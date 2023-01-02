@@ -97,22 +97,18 @@ const turnoComputadora = (puntosMinimos) => {
 
     } while ((puntosComputadora < puntosMinimos) && (puntosMinimos <= 21));
 
-    if (puntosComputadora<=21)  {
-        if (puntosComputadora > puntosMinimos) {
-            console.warn('perdiste desde turnoComputadora');
-        } 
-        if (puntosComputadora === puntosMinimos) {
-            console.warn('empate desde turnoComputadora');
+    setTimeout(() => {
+        if( puntosComputadora === puntosMinimos ) {
+            alert('Nadie gana :(');
+        } else if ( puntosMinimos > 21 ) {
+            alert('Computadora gana')
+        } else if( puntosComputadora > 21 ) {
+            alert('Jugador Gana');
+        } else {
+            alert('Computadora Gana')
         }
-    }else{
-        console.warn('ganaste...');
-    }
-
-
     
-    
-    
-
+    }, 100);
 
 }
 
@@ -133,10 +129,12 @@ btnPedir.addEventListener('click', () => {
     if (puntosJugador > 21) {
         console.warn('Lo siento mucho perdiste');
         btnPedir.disabled = true;
+        btnDetener.disabled = true;
         turnoComputadora(puntosJugador);
     } else if (puntosJugador === 21) {
         console.warn('Genial...');
         btnPedir.disabled = true;
+        btnDetener.disabled = true;
         turnoComputadora(puntosJugador);
     }
 })
@@ -147,21 +145,27 @@ btnDetener.addEventListener('click', () => {
     btnNuevo.disabled = true;
     turnoComputadora(puntosJugador);
 
-    // if (puntosJugador > 21) {
-    //     console.warn('Lo siento mucho perdiste');
-    //     btnPedir.disabled = true;
-    //     btnNuevo.disabled = true;
-    //     turnoComputadora(puntosJugador);
-    // } else if (puntosJugador === 21) {
-    //     console.warn('Genial...');
-    //     btnPedir.disabled = true;
-    //     btnNuevo.disabled = true;
-    //     turnoComputadora(puntosJugador);
-    // }
+})
 
-    //by Emmanuel 2022
+btnNuevo.addEventListener('click', ()=>{
+
+    deck=[];
+    deck = crearDeck();
+
+    puntosJugador = 0;
+    puntosComputadora = 0;
+
+    puntosHtml[0].innerText=0;
+    puntosHtml[1].innerText=0
+
+    divCartasComputadora.innerHTML='';
+    divCartasJugador.innerHTML='';
+
+    btnPedir.disabled=   false;
+    btnDetener.disabled= false;
 
 })
 
+//by Emmanuel 2022
 
 
